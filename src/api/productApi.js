@@ -17,11 +17,17 @@ export const getList = async ({page, size}) => {
 
 export const getOne = async (pno) => {
     const res = await axios.get(`${host}/${pno}`)
+    console.log("API 에서 서버 응답:", res.data);
     return res.data
 }
 
 export const putOne = async (pno, product) => {
     const header = {headers : {"Content-Type" : "multipart/form-data"}}
     const res = await axios.put(`${host}/${pno}`, product, header)
+    return res.data
+}
+
+export const deleteOne = async (pno) => {
+    const res = await axios.delete(`${host}/${pno}`)
     return res.data
 }

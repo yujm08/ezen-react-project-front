@@ -59,7 +59,7 @@ const AddComponent = () => {
     return(
         <div className="border-2 border-sky-200 mt-10 m-2 p-4">
 
-            {fetching ? <FetchingModal key={fetching}/> : <></>}
+            {fetching ? <FetchingModal/> : <></>}
 
             {result ? <FetchingModal
             title={'Product Add Result'}
@@ -69,7 +69,7 @@ const AddComponent = () => {
 
             <div className="flex justify-center">
                 <div className="relative mb-4 flex w-full flex-wrap items-stretch">
-                    <div className="w-1/5 p-6 text-right font-bold">product Name</div>
+                    <div className="w-1/5 p-6 text-right font-bold">Product Name</div>
                     <input className="w-4/5 p-6 rounded-r border-solid border-neutral-300 shadow-md"
                         name="pname"
                         type={'text'}
