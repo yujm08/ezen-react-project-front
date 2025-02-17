@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import todoRouter from "./todoRouter.js"; //이걸 추가하면
 import productsRouter from "./productsRouter.js";
+import memberRouter from "./memberRouter.js";
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -33,6 +34,10 @@ const root = createBrowserRouter([
         path: "products",
         element:<Suspense fallback={Loading}><ProductsIndex /></Suspense>,
         children: productsRouter()
+    },
+    {
+        path:"member",
+        children:memberRouter()
     }
 ]);
 

@@ -1,9 +1,17 @@
+import useCustomLogin from "../hooks/useCustomLogin";
 import BasicLayout from "../layouts/BasicLayout";
 
 const AboutPage = () => {
+
+  const {isLogin, moveToLoginReturn} = useCustomLogin();
+
+  if(!isLogin) {
+    return moveToLoginReturn()
+  }
+
   return (
     <BasicLayout>
-      <h1>About Page</h1>
+      <div className="text-3xl">About Page</div>
     </BasicLayout>
   );
 }

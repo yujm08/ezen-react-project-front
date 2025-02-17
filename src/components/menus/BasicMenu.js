@@ -1,6 +1,12 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const BasicMenu = () => {
+
+    const loginState = useSelector(state => state.loginSlice)
+
+    console.log("loginState......" + loginState)
+
     return (
         <nav id="navbar" className="flex bg-blue-300">
             
@@ -22,9 +28,15 @@ const BasicMenu = () => {
             </div>
             
             <div className="w-1/5 flex justify-end p-4 bg-orange-300 font-medium">
+            { !loginState.email ?
                 <div className="text-white text-sm m-1 rounded">
-                    Login
+                    <Link to={'member/login'}>Login</Link>
                 </div>
+                :
+                <div className="text-white text-sm m-1 rounded">
+                    <Link to={'member/logout'}>Logout</Link>
+                </div>
+            }
             </div>
         </nav>
     );
