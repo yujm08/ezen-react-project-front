@@ -4,6 +4,7 @@ import { getList } from "../../api/productApi";
 import FetchingModal from "../../components/common/FetchingMadal";
 import { API_SERVER_HOST } from "../../api/todoApi";
 import PageCompnent from "../../components/common/PageComponent"
+import useCustomLogin from "../../hooks/useCustomLogin";
 
 const host = API_SERVER_HOST;
 
@@ -24,19 +25,22 @@ const ListComponent = () => {
 
     const {page, size, refresh, moveToList, moveToRead} = useCustomMove()
 
+    const {exceptionHandle} = useCustomLogin()
+
     const [serverData, setServerData] = useState(initState)
 
     const [fetching, setFetching] = useState(false)
 
     useEffect( () => {
+        
 
         setFetching(true)
 
         getList({page, size}).then(data => {
             console.log(data)
-            setServerData(data)
+            setServerData(data || initState); //만약 data가 undefined면 초기값으로 설정
             setFetching(false)
-        })
+        }).catch( err => exceptionHandle(err))
     }, [page, size, refresh])
 
     return(

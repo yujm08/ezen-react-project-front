@@ -30,11 +30,11 @@ const BasicMenu = () => {
             <div className="w-1/5 flex justify-end p-4 bg-orange-300 font-medium">
             { !loginState.email ?
                 <div className="text-white text-sm m-1 rounded">
-                    <Link to={'member/login'}>Login</Link>
+                    <Link to={'/member/login'}>Login</Link>
                 </div>
                 :
                 <div className="text-white text-sm m-1 rounded">
-                    <Link to={'member/logout'}>Logout</Link>
+                    <Link to={'/member/logout'}>Logout</Link>
                 </div>
             }
             </div>

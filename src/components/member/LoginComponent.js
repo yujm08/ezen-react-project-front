@@ -1,8 +1,6 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { logIn, loginPostAsync } from "../../slices/loginSlice";
-import { useNavigate } from "react-router-dom";
 import useCustomLogin from "../../hooks/useCustomLogin";
+import { setCookie } from "../../api/util/cookieUtil";
 
 const initState = {
     email:'',
@@ -27,9 +25,10 @@ const LoginComponent = () => {
         doLogin(loginParam)
         .then(data => {
             console.log(data)
-            if(data.error) {
+            if(data && data.error) {
                 alert("이메일과 패스워드를 확인 후 다시 입력하세요")
             }else{
+                setCookie("member", JSON.stringify(data), 1);
                 alert("로그인 성공")
                 moveToPath('/')
             }
